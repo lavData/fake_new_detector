@@ -1,11 +1,9 @@
 import string
 import numpy as np
 import pandas as pd
-import seaborn as sns
 from PIL import Image
 import streamlit as st
 from pyvi import ViTokenizer
-import matplotlib.pyplot as plt 
 from sklearn.metrics import accuracy_score
 from sklearn.neural_network import MLPClassifier
 from sklearn.neighbors import KNeighborsClassifier
