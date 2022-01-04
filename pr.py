@@ -19,7 +19,7 @@ st.image(image)
 st.title('ENGLISH FAKE NEW DETECTOR')
 
 model =  st.selectbox('Model you want',['LogisticRegressionCV',\
-                                        'KNeighborsClassifier',\
+                                        'DecisionTreeClassifier',\
                                         'MLPClassifier'])
 
 text =  st.text_area('Piece of news here')
@@ -55,7 +55,6 @@ if st.button('Predict it news is real or fake 👈'):
         lg_re = LogisticRegressionCV(Cs=20, cv=5, solver='newton-cg', max_iter=10000).\
                 fit(x_train, news_df.label)
         result = lg_re.predict(x_test)
-        st.write(result)
         if result[0] == 0:
             st.write('fake new')
         else:
@@ -79,4 +78,5 @@ if st.button('Predict it news is real or fake 👈'):
             st.write('real new')
 
 
-
+st.markdown('---')
+st.markdown('Member: Phạm Thành Đạt, Trần Bảo Tín, Nguyễn Phú Thụ, Lê Anh Vũ')
