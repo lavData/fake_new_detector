@@ -67,26 +67,26 @@ if st.button('Predict it news is real or fake 👈'):
                 fit(x_train, news_df.label)
         result = lg_re.predict(x_test)
         if result[0] == 0:
-            st.write('fake new')
+            st.write('fake news')
         else:
-            st.write('real new')
+            st.write('real news')
         
     elif model == 'DecisionTreeClassifier':
         tree = DecisionTreeClassifier(random_state=42, max_features=None, max_leaf_nodes=30).\
                      fit(x_train, news_df.label)
         result = tree.predict(x_test)
         if result[0] == 0:
-            st.write('fake new')
+            st.write('fake news')
         else:
-            st.write('real new')
+            st.write('real news')
     else:
         MLPC = MLPClassifier(hidden_layer_sizes=(50), alpha=0, solver='lbfgs', max_iter=10000).\
                fit(x_train, news_df.label)
         result = MLPC.predict(x_test)
         if result[0] == 0:
-            st.write('fake new')
+            st.write('fake news')
         else:
-            st.write('real new')
+            st.write('real news')
 
 
 st.markdown('---')
