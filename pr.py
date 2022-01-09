@@ -18,7 +18,7 @@ def remove_stopword(x):
 image = Image.open('./image.jpeg')
 st.image(image)
 # Phần title
-st.title('ENGLISH FAKE NEWS DETECTOR')
+st.title('VIETNAMESE FAKE NEWS DETECTOR')
 
 # Phần chọn model
 model =  st.selectbox('Model you want',['LogisticRegressionCV',\
