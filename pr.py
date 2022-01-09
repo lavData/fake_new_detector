@@ -2,6 +2,7 @@ import string
 import pandas as pd
 from PIL import Image
 import streamlit as st
+from joblib import load
 from pyvi import ViTokenizer
 from sklearn.metrics import accuracy_score
 from sklearn.neural_network import MLPClassifier
@@ -63,8 +64,7 @@ if st.button('Predict it news is real or fake 👈'):
 
 
     if model == 'LogisticRegressionCV':
-        lg_re = LogisticRegressionCV(Cs=20, cv=5, solver='newton-cg', max_iter=10000).\
-                fit(x_train, news_df.label)
+        lg_re = load("lg_re").fit(x_train, news_df.label)
         result = lg_re.predict(x_test)
         if result[0] == 0:
             st.write('fake news')
@@ -72,16 +72,14 @@ if st.button('Predict it news is real or fake 👈'):
             st.write('real news')
         
     elif model == 'DecisionTreeClassifier':
-        tree = DecisionTreeClassifier(random_state=42, max_features=None, max_leaf_nodes=30).\
-                     fit(x_train, news_df.label)
+        tree = load("tree").fit(x_train, news_df.label)
         result = tree.predict(x_test)
         if result[0] == 0:
             st.write('fake news')
         else:
             st.write('real news')
     else:
-        MLPC = MLPClassifier(hidden_layer_sizes=(50), alpha=0, solver='lbfgs', max_iter=10000).\
-               fit(x_train, news_df.label)
+        MLPC = load("MLPC").fit(x_train, news_df.label)
         result = MLPC.predict(x_test)
         if result[0] == 0:
             st.write('fake news')
